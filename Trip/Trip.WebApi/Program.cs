@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Trip.Data;
+using Trip.Services;
+using Trip.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +17,8 @@ builder.Services.AddDbContext<TripDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 //Dependency Injecion
-builder.Services.AddTransient<Trip.Services.ITripService, Trip.Services.TripService>();
+builder.Services.AddTransient<ITripService, TripService>();
+builder.Services.AddTransient<IDestinationService, DestinationService>();
 
 var allowSpecificOrigins = "_allowSpecificOrigins";
 builder.Services.AddCors(options =>

@@ -1,4 +1,4 @@
-﻿namespace Trip.Services;
+﻿namespace Trip.Services.Interfaces;
 
 public interface ITripService
 {

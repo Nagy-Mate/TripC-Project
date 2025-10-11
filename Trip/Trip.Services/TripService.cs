@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Trip.Data;
+using Trip.Services.Interfaces;
 
 namespace Trip.Services;
 

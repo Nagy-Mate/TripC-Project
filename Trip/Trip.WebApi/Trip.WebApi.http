@@ -6,3 +6,7 @@ Accept: application/json
 ###
 GET {{Trip.WebApi_HostAddress}}/api/trips
 Accept: application/json
+
+###
+GET {{Trip.WebApi_HostAddress}}/api/destinations
+Accept: application/json

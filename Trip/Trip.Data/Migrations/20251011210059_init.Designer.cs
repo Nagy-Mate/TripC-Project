@@ -12,7 +12,7 @@ using Trip.Data;
 namespace Trip.Data.Migrations
 {
     [DbContext(typeof(TripDbContext))]
-    [Migration("20251011204205_init")]
+    [Migration("20251011210059_init")]
     partial class init
     {
         /// <inheritdoc />
