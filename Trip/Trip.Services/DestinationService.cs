@@ -21,4 +21,21 @@ public class DestinationService(TripDbContext db) : IDestinationService
         db.Destinations.Add(destination);
         await db.SaveChangesAsync();
     }
+    public async Task<bool> DestinationExistsAsync(int id)
+    {
+        return await db.Destinations.AnyAsync(d => d.Id == id);
+    }
+    public async Task DeleteDestinationAsync(int id)
+    {
+        await db.Destinations.Where(d => d.Id == id).ExecuteDeleteAsync();
+    }
+
+    public async Task UpdateDestinationAsync(Destination destination)
+    {
+        await db.Destinations.Where(d => d.Id == destination.Id)
+            .ExecuteUpdateAsync(d => d
+                .SetProperty(d => d.Name, destination.Name)
+                .SetProperty(d => d.Country, destination.Country)
+                .SetProperty(d => d.Description, destination.Description));
+    }
 }

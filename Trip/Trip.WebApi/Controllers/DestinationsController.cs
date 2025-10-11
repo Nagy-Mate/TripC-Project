@@ -30,4 +30,27 @@ public class DestinationsController(IDestinationService destinationService) : Co
         await destinationService.CreateDestinationAsync(destination);
         return CreatedAtAction(nameof(GetDestinationById), new { id = destination.Id }, destination);
     }   
+    [HttpPut("{id}")]
+    public async Task<ActionResult> UpdateDestination(int id, Destination destination)
+    {
+
+        if (!await destinationService.DestinationExistsAsync(id))
+        {
+            return NotFound();
+        }
+        destination.Id = id;    
+        await destinationService.UpdateDestinationAsync(destination);
+        return NoContent();
+    }
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteDestination(int id)
+    {
+        if (!await destinationService.DestinationExistsAsync(id))
+        {
+            return NotFound();
+        }
+        await destinationService.DeleteDestinationAsync(id);
+        return NoContent();
+    }
+
 }

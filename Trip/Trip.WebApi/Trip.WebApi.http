@@ -8,7 +8,7 @@ GET {{Trip.WebApi_HostAddress}}/api/trips
 Accept: application/json
 
 ###
-GET {{Trip.WebApi_HostAddress}}/api/destinations/1
+GET {{Trip.WebApi_HostAddress}}/api/destinations/
 Accept: application/json
 
 ###
@@ -16,10 +16,10 @@ POST {{Trip.WebApi_HostAddress}}/api/trips
 Content-Type: application/json
 Accept: application/json
 {
-    "name": "Summer Vacation",
+    "name": "Summer Vacation 22 ",
     "startDate": "2024-07-01T00:00:00",
     "endDate": "2024-07-14T00:00:00",
-    "destinationId": 1
+    "destinationId": 2
 }
 
 ###
@@ -27,8 +27,38 @@ POST {{Trip.WebApi_HostAddress}}/api/destinations
 Content-Type: application/json
 Accept: application/json
 {
-  "name": "Barcelona",
-  "country": "Spanyol",
-  "description" :"aaaa"
+  "name": "Róma",
+  "country": "Olasz",
+  "description" :"bbbb"
 
 }
+
+###
+PUT {{Trip.WebApi_HostAddress}}/api/trips/5
+Content-Type: application/json
+Accept: application/json
+{
+    "name": "Summer Vacation 11 ",
+    "startDate": "2024-08-01T00:00:00",
+    "endDate": "2024-09-14T00:00:00",
+    "destinationId": 2
+}
+
+###
+DELETE {{Trip.WebApi_HostAddress}}/api/trips/1
+Content-Type: application/json
+
+###
+PUT {{Trip.WebApi_HostAddress}}/api/destinations/1
+Content-Type: application/json
+Accept: application/json
+{
+  "name": "Róma",
+  "country": "Olasz ország",
+  "description" :"bbbb"
+
+}
+
+###
+DELETE {{Trip.WebApi_HostAddress}}/api/destinations/1
+Content-Type: application/json

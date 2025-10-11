@@ -26,5 +26,22 @@ public class TripService(TripDbContext db) : ITripService
         db.Trips.Add(trip);
         await db.SaveChangesAsync();
     }
-
+    public async Task<bool> TripExistsAsync(int id)
+    {
+        return await db.Trips.AnyAsync(t => t.Id == id);
+    }
+    public async Task DeleteTripAsync(int id)
+    {
+        await db.Trips.Where(t => t.Id == id).ExecuteDeleteAsync();
+    }
+    public async Task UpdateTripAsync(Data.DbModels.Trip trip)
+    {
+        await db.Trips.Where(t => t.Id == trip.Id)
+            .ExecuteUpdateAsync(t => t
+                .SetProperty(t => t.Name, trip.Name)
+                .SetProperty(t => t.StartDate, trip.StartDate)
+                .SetProperty(t => t.EndDate, trip.EndDate)
+                .SetProperty(t => t.DestinationId, trip.DestinationId));
+                
+    }
 }

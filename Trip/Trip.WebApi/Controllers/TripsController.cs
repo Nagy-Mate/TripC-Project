@@ -6,7 +6,7 @@ namespace Trip.WebApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class TripsController(ITripService tripService) : ControllerBase
+public class TripsController(ITripService tripService, IDestinationService destinationService) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<List<Data.DbModels.Trip>>> GetTrips()
@@ -33,7 +33,38 @@ public class TripsController(ITripService tripService) : ControllerBase
     [HttpPost]
     public async Task<ActionResult> CreateTrip(Data.DbModels.Trip trip)
     {
+        if (!await destinationService.DestinationExistsAsync(trip.DestinationId))
+        {
+            return BadRequest("Invalid DestinationId");
+        }
         await tripService.CreateTripAsync(trip);
         return CreatedAtAction(nameof(GetTripById), new { id = trip.Id }, trip);
     }
+    [HttpPut("{id}")]
+    public async Task<ActionResult> UpdateTrip(int id, Data.DbModels.Trip trip)
+    {
+        if (!await tripService.TripExistsAsync(id))
+        {
+            return NotFound();
+        }
+        if(!await destinationService.DestinationExistsAsync(trip.DestinationId))
+        {
+            return BadRequest("Invalid DestinationId");
+        }
+        trip.Id = id;
+        await tripService.UpdateTripAsync(trip);
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteTrip(int id)
+    {
+        if (!await tripService.TripExistsAsync(id))
+        {
+            return NotFound();
+        }
+        await tripService.DeleteTripAsync(id);
+        return NoContent();
+    }
+
 }
