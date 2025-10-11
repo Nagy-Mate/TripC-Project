@@ -13,4 +13,15 @@ public class DestinationsController(IDestinationService destinationService) : Co
     {
         return Ok(await destinationService.GetDestinationsAsync());
     }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Destination>> GetDestinationById(int id)
+    {
+        var destination = await destinationService.GetDestinationByIdAsync(id);
+        if (destination == null)
+        {
+            return NotFound();
+        }
+        return Ok(destination);
+    }
 }

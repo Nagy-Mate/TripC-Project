@@ -10,4 +10,9 @@ public class TripService(TripDbContext db) : ITripService
     {
         return await db.Trips.ToListAsync();
     }
+
+    public async Task<Data.DbModels.Trip?> GetTripByIdAsync(int id)
+    {
+        return await db.Trips.FirstOrDefaultAsync(t => t.Id == id);
+    }
 }

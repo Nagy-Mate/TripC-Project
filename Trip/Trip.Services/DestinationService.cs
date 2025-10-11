@@ -12,4 +12,8 @@ public class DestinationService(TripDbContext db) : IDestinationService
     {
         return await db.Destinations.Include(d => d.Trips).ToListAsync();
     }   
+    public async Task<Destination?> GetDestinationByIdAsync(int id)
+    {
+        return await db.Destinations.Include(d => d.Trips).FirstOrDefaultAsync(d => d.Id == id);
+    }   
 }

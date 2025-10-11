@@ -13,4 +13,15 @@ public class TripsController(ITripService tripService) : ControllerBase
     {
         return Ok(await tripService.GetTripsAsync());
     }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Data.DbModels.Trip>> GetTripById(int id)
+    {          
+        var trip = await tripService.GetTripByIdAsync(id);
+        if (trip == null)
+        {
+            return NotFound();
+        }
+        return Ok(trip);
+    }
 }

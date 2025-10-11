@@ -8,5 +8,5 @@ GET {{Trip.WebApi_HostAddress}}/api/trips
 Accept: application/json
 
 ###
-GET {{Trip.WebApi_HostAddress}}/api/destinations
+GET {{Trip.WebApi_HostAddress}}/api/destinations/1
 Accept: application/json
