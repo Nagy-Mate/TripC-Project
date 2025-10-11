@@ -49,13 +49,13 @@ DELETE {{Trip.WebApi_HostAddress}}/api/trips/1
 Content-Type: application/json
 
 ###
-PUT {{Trip.WebApi_HostAddress}}/api/destinations/1
+PUT {{Trip.WebApi_HostAddress}}/api/destinations/2
 Content-Type: application/json
 Accept: application/json
 {
-  "name": "Róma",
-  "country": "Olasz ország",
-  "description" :"bbbb"
+  "name": "Barca",
+  "country": "Espanyol",
+  "description" :"bba latinas"
 
 }
 
