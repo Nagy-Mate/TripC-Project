@@ -10,3 +10,25 @@ Accept: application/json
 ###
 GET {{Trip.WebApi_HostAddress}}/api/destinations/1
 Accept: application/json
+
+###
+POST {{Trip.WebApi_HostAddress}}/api/trips
+Content-Type: application/json
+Accept: application/json
+{
+    "name": "Summer Vacation",
+    "startDate": "2024-07-01T00:00:00",
+    "endDate": "2024-07-14T00:00:00",
+    "destinationId": 1
+}
+
+###
+POST {{Trip.WebApi_HostAddress}}/api/destinations
+Content-Type: application/json
+Accept: application/json
+{
+  "name": "Barcelona",
+  "country": "Spanyol",
+  "description" :"aaaa"
+
+}

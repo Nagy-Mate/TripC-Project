@@ -24,4 +24,10 @@ public class DestinationsController(IDestinationService destinationService) : Co
         }
         return Ok(destination);
     }
+    [HttpPost]
+    public async Task<ActionResult> CreateDestination(Destination destination)
+    {
+        await destinationService.CreateDestinationAsync(destination);
+        return CreatedAtAction(nameof(GetDestinationById), new { id = destination.Id }, destination);
+    }   
 }

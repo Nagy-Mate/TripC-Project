@@ -24,4 +24,16 @@ public class TripsController(ITripService tripService) : ControllerBase
         }
         return Ok(trip);
     }
+
+    [HttpGet("ByDestination/{destinationId}")]
+    public async Task<ActionResult<List<Data.DbModels.Trip>>> GetTripsByDestinationId(int destinationId)
+    {
+        return Ok(await tripService.GetTripsByDestinationIdAsync(destinationId));
+    }   
+    [HttpPost]
+    public async Task<ActionResult> CreateTrip(Data.DbModels.Trip trip)
+    {
+        await tripService.CreateTripAsync(trip);
+        return CreatedAtAction(nameof(GetTripById), new { id = trip.Id }, trip);
+    }
 }

@@ -15,4 +15,16 @@ public class TripService(TripDbContext db) : ITripService
     {
         return await db.Trips.FirstOrDefaultAsync(t => t.Id == id);
     }
+
+    public async Task<List<Data.DbModels.Trip>> GetTripsByDestinationIdAsync(int destinationId)
+    {
+        return await db.Trips.Where(t => t.DestinationId == destinationId).ToListAsync();
+    }
+
+    public async Task CreateTripAsync(Data.DbModels.Trip trip)
+    {
+        db.Trips.Add(trip);
+        await db.SaveChangesAsync();
+    }
+
 }

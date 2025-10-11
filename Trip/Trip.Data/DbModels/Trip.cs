@@ -8,5 +8,5 @@ public class Trip
     public DateTime EndDate { get; set; }
 
     public int DestinationId { get; set; }
-    public Destination Destination { get; set; }
+    public Destination? Destination { get; set; }
 }

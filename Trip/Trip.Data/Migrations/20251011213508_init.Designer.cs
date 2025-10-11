@@ -12,7 +12,7 @@ using Trip.Data;
 namespace Trip.Data.Migrations
 {
     [DbContext(typeof(TripDbContext))]
-    [Migration("20251011210059_init")]
+    [Migration("20251011213508_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -38,7 +38,6 @@ namespace Trip.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
