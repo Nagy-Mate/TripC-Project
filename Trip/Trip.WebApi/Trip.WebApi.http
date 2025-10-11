@@ -1,0 +1,8 @@
+@Trip.WebApi_HostAddress = http://localhost:5048
+
+GET {{Trip.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+GET {{Trip.WebApi_HostAddress}}/api/trips
+Accept: application/json
