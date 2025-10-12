@@ -4,7 +4,9 @@
   padding: 2rem;
   text-align: center;
 }
-
+body {
+  background-color: #cbd0c0;
+}
 .card {
   padding: 2em;
 }
@@ -35,9 +37,20 @@ th {
   width: 60px;
   padding: 2px;
 }
-input[type="date"]::-webkit-clear-button {
-  display: none;
+#BackToButton {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin: 0;
+  background-color: rgb(29, 102, 199);
 }
-input[type="date"]::-moz-clear {
-  display: none;
+#saveBtn {
+  background-color: greenyellow;
+}
+#createBtn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin: 0;
+  background-color: rgb(29, 102, 199);
 }

@@ -3,13 +3,14 @@ import type { Destination } from "../types/Destination";
 import { useEffect, useState } from "react";
 import apiClient from "../api/ApiClient";
 import type { Trip } from "../types/Trip";
-import "../styles/App.css"
+import "../styles/App.css";
+import { Link } from "react-router";
 
 function UpdatePage() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [destinations, setDestinations] = useState<Array<Destination>>([]);
+  
   const [trip, setTrip] = useState<Trip>();
 
   const today = new Date().toISOString().split("T")[0];
@@ -72,6 +73,10 @@ function UpdatePage() {
 
   return (
     <>
+      <Link to="/" >
+        <button id="BackToButton">Home Page</button>
+      </Link>
+
       {trip ? (
         <div>
           <p>
@@ -93,9 +98,14 @@ function UpdatePage() {
                   : ""
               }
               min={today}
-              onChange={(e) =>
-                setNewTrip({ ...newTrip, startDate: new Date(e.target.value) })
-              }
+              onChange={(e) => {
+                const val = e.target.value;
+                if (val === "") {
+                  setNewTrip({ ...newTrip, startDate: new Date() });
+                } else {
+                  setNewTrip({ ...newTrip, startDate: new Date(val) });
+                }
+              }}
             />{" "}
           </p>
 
@@ -109,9 +119,14 @@ function UpdatePage() {
                   : ""
               }
               min={today}
-              onChange={(e) =>
-                setNewTrip({ ...newTrip, endDate: new Date(e.target.value) })
-              }
+              onChange={(e) => {
+                const val = e.target.value;
+                if (val === "") {
+                  setNewTrip({ ...newTrip, endDate: new Date() });
+                } else {
+                  setNewTrip({ ...newTrip, endDate: new Date(val) });
+                }
+              }}
             />
           </p>
 
@@ -134,7 +149,7 @@ function UpdatePage() {
               ))}
             </select>
           </p>
-          <button onClick={saveBtnOnClick}>Save</button>
+          <button onClick={saveBtnOnClick} id="saveBtn">Save</button>
         </div>
       ) : (
         <h1>Trip Not found</h1>

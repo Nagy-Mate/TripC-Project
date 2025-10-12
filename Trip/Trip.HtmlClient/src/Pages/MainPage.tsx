@@ -34,6 +34,9 @@ function MainPage() {
   }, [tripToDeleteId]);
   return (
     <>
+      <Link to="/create">
+        <button id="createBtn">Create</button>
+      </Link>
       <table>
         <tbody>
           <tr>
