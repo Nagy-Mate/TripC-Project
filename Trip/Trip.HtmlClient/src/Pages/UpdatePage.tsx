@@ -3,6 +3,7 @@ import type { Destination } from "../types/Destination";
 import { useEffect, useState } from "react";
 import apiClient from "../api/ApiClient";
 import type { Trip } from "../types/Trip";
+import "../styles/App.css"
 
 function UpdatePage() {
   const { id } = useParams();
@@ -39,10 +40,18 @@ function UpdatePage() {
   }, []);
 
   const saveBtnOnClick = async () => {
-    setNewTrip((prev) => ({
-      ...prev,
-      name: prev.name.trim() === "" ? trip?.name || "" : prev.name.trim(),
-    }));
+    newTrip.name =
+      newTrip.name.trim() === "" ? trip?.name ?? "" : newTrip.name.trim();
+
+    const startDate = new Date(newTrip.startDate);
+    const endDate = new Date(newTrip.endDate);
+    if (startDate > endDate) {
+      [newTrip.startDate, newTrip.endDate] = [endDate, startDate];
+    }
+
+    if (newTrip.destinationId === 0 && trip) {
+      newTrip.destinationId = trip.destinationId;
+    }
 
     apiClient
       .put(`/trips/${trip?.id}`, newTrip)

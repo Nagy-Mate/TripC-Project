@@ -19,19 +19,25 @@ th {
   border: 1px solid black;
   border-collapse: collapse;
 }
-th{
+th {
   width: 160px;
 }
-#fth{
+#fth {
   width: 50px;
 }
-.dButton{
+.dButton {
   background-color: rgb(221, 81, 81);
   width: 60px;
   padding: 2px;
 }
-.uButton{
+.uButton {
   background-color: rgb(152, 210, 65);
   width: 60px;
   padding: 2px;
+}
+input[type="date"]::-webkit-clear-button {
+  display: none;
+}
+input[type="date"]::-moz-clear {
+  display: none;
 }
