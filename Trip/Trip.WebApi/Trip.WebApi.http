@@ -16,10 +16,10 @@ POST {{Trip.WebApi_HostAddress}}/api/trips
 Content-Type: application/json
 Accept: application/json
 {
-    "name": "Summer Vacation 22 ",
+    "name": "Summer Vacation 44 ",
     "startDate": "2024-07-01T00:00:00",
     "endDate": "2024-07-14T00:00:00",
-    "destinationId": 2
+    "destinationId": 3
 }
 
 ###
@@ -38,7 +38,7 @@ PUT {{Trip.WebApi_HostAddress}}/api/trips/5
 Content-Type: application/json
 Accept: application/json
 {
-    "name": "Summer Vacation 11 ",
+    "name": "Summer Vacation 21 ",
     "startDate": "2024-08-01T00:00:00",
     "endDate": "2024-09-14T00:00:00",
     "destinationId": 2
