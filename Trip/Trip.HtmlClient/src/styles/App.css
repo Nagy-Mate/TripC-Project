@@ -54,3 +54,17 @@ th {
   margin: 0;
   background-color: rgb(29, 102, 199);
 }
+.inputErr {
+  background-color: rgb(221, 81, 81);
+  border-radius: 25px;
+  font-weight: bold;
+  width: 150px;
+  margin: 15px auto;
+}
+.inputSucc {
+  background-color: rgb(78, 215, 28);
+  border-radius: 25px;
+  font-weight: bold;
+  width: 150px;
+  margin: 15px auto;
+}

@@ -10,7 +10,7 @@ function UpdatePage() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  
+  const [destinations, setDestinations] = useState<Array<Destination>>([]);
   const [trip, setTrip] = useState<Trip>();
 
   const today = new Date().toISOString().split("T")[0];
@@ -73,7 +73,7 @@ function UpdatePage() {
 
   return (
     <>
-      <Link to="/" >
+      <Link to="/">
         <button id="BackToButton">Home Page</button>
       </Link>
 
@@ -149,7 +149,9 @@ function UpdatePage() {
               ))}
             </select>
           </p>
-          <button onClick={saveBtnOnClick} id="saveBtn">Save</button>
+          <button onClick={saveBtnOnClick} id="saveBtn">
+            Save
+          </button>
         </div>
       ) : (
         <h1>Trip Not found</h1>
