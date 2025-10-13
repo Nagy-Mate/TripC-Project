@@ -4,11 +4,22 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Trip.App"
+    xmlns:views="clr-namespace:Trip.App.Views"
     Title="Trip.App">
 
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+
+    <ShellContent
+        Title="Add Destination"
+        ContentTemplate="{DataTemplate views:AddDestinationPage}"
+        Route="AddDestinationPage" />
+
+    <ShellContent
+        Title="Add Trip"
+        ContentTemplate="{DataTemplate views:AddTripPage}"
+        Route="AddTripPage" />
 
 </Shell>

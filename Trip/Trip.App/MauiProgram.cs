@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Trip.App.ViewModels;
+using Trip.App.Views;
 using Trip.Data;
 using Trip.Services;
 using Trip.Services.Interfaces;
@@ -25,9 +26,13 @@ namespace Trip.App
 
             //Views
             builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<AddTripPage>();
+            builder.Services.AddTransient<AddDestinationPage>();
 
             //ViewModels
             builder.Services.AddTransient<MainPageViewModel>();
+            builder.Services.AddTransient<AddTripPageViewModel>();
+            builder.Services.AddTransient<AddDestinationPageViewModel>();
 
             //Services
             builder.Services.AddTransient<ITripService, TripService>();
