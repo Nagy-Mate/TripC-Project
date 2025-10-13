@@ -1,6 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 using Trip.App.ViewModels;
 using Trip.Data;
+using Trip.Services;
+using Trip.Services.Interfaces;
 
 namespace Trip.App
 {
@@ -11,6 +14,7 @@ namespace Trip.App
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -25,8 +29,12 @@ namespace Trip.App
             //ViewModels
             builder.Services.AddTransient<MainPageViewModel>();
 
+            //Services
+            builder.Services.AddTransient<ITripService, TripService>();
+            builder.Services.AddTransient<IDestinationService, DestinationService>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

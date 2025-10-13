@@ -12,9 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 //database 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<TripDbContext>(options =>
-    options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<TripDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //Dependency Injecion
 builder.Services.AddTransient<ITripService, TripService>();
@@ -26,9 +24,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy(allowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("*")
-                            .AllowAnyHeader()
-                            .AllowAnyMethod();
+                          policy.AllowAnyOrigin()
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
                       });
 });
 

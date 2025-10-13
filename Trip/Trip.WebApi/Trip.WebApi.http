@@ -53,9 +53,9 @@ PUT {{Trip.WebApi_HostAddress}}/api/destinations/2
 Content-Type: application/json
 Accept: application/json
 {
-  "name": "Barca",
-  "country": "Espanyol",
-  "description" :"bba latinas"
+  "name": "Milano",
+  "country": "Italia",
+  "description" :"bba italianos"
 
 }
 

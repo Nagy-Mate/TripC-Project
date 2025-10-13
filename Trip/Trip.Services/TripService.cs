@@ -8,12 +8,17 @@ public class TripService(TripDbContext db) : ITripService
 {
     public async Task<List<Data.DbModels.Trip>> GetTripsAsync()
     {
-        return await db.Trips.ToListAsync();
+        return await db.Trips
+            .Include(t => t.Destination)
+            .ToListAsync();
     }
+
 
     public async Task<Data.DbModels.Trip?> GetTripByIdAsync(int id)
     {
-        return await db.Trips.FirstOrDefaultAsync(t => t.Id == id);
+        return await db.Trips
+            .Include(t => t.Destination)
+            .FirstOrDefaultAsync(t => t.Id == id);
     }
 
     public async Task<List<Data.DbModels.Trip>> GetTripsByDestinationIdAsync(int destinationId)
@@ -23,13 +28,17 @@ public class TripService(TripDbContext db) : ITripService
 
     public async Task CreateTripAsync(Data.DbModels.Trip trip)
     {
+        trip.Destination = null;
         db.Trips.Add(trip);
         await db.SaveChangesAsync();
     }
+
+
     public async Task<bool> TripExistsAsync(int id)
     {
         return await db.Trips.AnyAsync(t => t.Id == id);
     }
+
     public async Task DeleteTripAsync(int id)
     {
         await db.Trips.Where(t => t.Id == id).ExecuteDeleteAsync();

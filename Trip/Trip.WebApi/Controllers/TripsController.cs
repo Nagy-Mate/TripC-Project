@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Trip.Services.Interfaces;
 
 namespace Trip.WebApi.Controllers;
@@ -16,7 +15,7 @@ public class TripsController(ITripService tripService, IDestinationService desti
 
     [HttpGet("{id}")]
     public async Task<ActionResult<Data.DbModels.Trip>> GetTripById(int id)
-    {          
+    {
         var trip = await tripService.GetTripByIdAsync(id);
         if (trip == null)
         {
@@ -29,7 +28,8 @@ public class TripsController(ITripService tripService, IDestinationService desti
     public async Task<ActionResult<List<Data.DbModels.Trip>>> GetTripsByDestinationId(int destinationId)
     {
         return Ok(await tripService.GetTripsByDestinationIdAsync(destinationId));
-    }   
+    }
+
     [HttpPost]
     public async Task<ActionResult> CreateTrip(Data.DbModels.Trip trip)
     {
@@ -40,6 +40,7 @@ public class TripsController(ITripService tripService, IDestinationService desti
         await tripService.CreateTripAsync(trip);
         return CreatedAtAction(nameof(GetTripById), new { id = trip.Id }, trip);
     }
+
     [HttpPut("{id}")]
     public async Task<ActionResult> UpdateTrip(int id, Data.DbModels.Trip trip)
     {
@@ -47,7 +48,7 @@ public class TripsController(ITripService tripService, IDestinationService desti
         {
             return NotFound();
         }
-        if(!await destinationService.DestinationExistsAsync(trip.DestinationId))
+        if (!await destinationService.DestinationExistsAsync(trip.DestinationId))
         {
             return BadRequest("Invalid DestinationId");
         }
@@ -66,5 +67,4 @@ public class TripsController(ITripService tripService, IDestinationService desti
         await tripService.DeleteTripAsync(id);
         return NoContent();
     }
-
 }
