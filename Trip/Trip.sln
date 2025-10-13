@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trip.Data", "Trip.Data\Trip
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trip.Services", "Trip.Services\Trip.Services.csproj", "{AC933852-222B-4038-BD86-7F60AE85D328}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trip.App", "Trip.App\Trip.App.csproj", "{914AC76B-AE1C-44B1-88DA-8C11E40316BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{AC933852-222B-4038-BD86-7F60AE85D328}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC933852-222B-4038-BD86-7F60AE85D328}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC933852-222B-4038-BD86-7F60AE85D328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{914AC76B-AE1C-44B1-88DA-8C11E40316BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{914AC76B-AE1C-44B1-88DA-8C11E40316BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{914AC76B-AE1C-44B1-88DA-8C11E40316BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{914AC76B-AE1C-44B1-88DA-8C11E40316BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
