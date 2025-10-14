@@ -112,7 +112,7 @@ public partial class UpdateTripPageViewModel : ObservableObject
 
         try
         {
-            var response = await _httpClient.PutAsJsonAsync("http://localhost:5048/api/trips/"+SelectedTripForUpdate.Id, updatedTrip);
+            var response = await _httpClient.PutAsJsonAsync($"http://localhost:5048/api/trips/{SelectedTripForUpdate.Id}", updatedTrip);
 
             if (response.IsSuccessStatusCode)
             {
