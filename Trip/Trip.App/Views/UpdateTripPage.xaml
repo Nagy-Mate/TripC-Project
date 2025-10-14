@@ -5,11 +5,59 @@
              Title="UpdateTripPage"
              xmlns:viewModel="clr-namespace:Trip.App.ViewModels"
              xmlns:models="clr-namespace:Trip.Data.DbModels;assembly=Trip.Data">
-    
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="10" HorizontalOptions="Center"  WidthRequest="400">
+            <Label Text="Update Trip" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+
+            <Border Stroke="White" Padding="5">
+                <VerticalStackLayout>
+                    <Label Text="Pick a trip for update:"/>
+                    <Picker ItemsSource="{Binding Trips}"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding SelectedTripForUpdate, Mode=TwoWay}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Stroke="White" Padding="5">
+                <VerticalStackLayout>
+                    <Label Text="Trip's name:"/>
+                    <Entry FontSize="15" Text="{Binding Name}"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Stroke="White" Padding="5">
+                <VerticalStackLayout>
+                    <Label Text="Starting date:"/>
+                    <DatePicker Date="{Binding StartDate}"
+                            Format="yyyy-MM-dd"
+                            HorizontalOptions="Fill"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Stroke="White" Padding="5">
+                <VerticalStackLayout>
+                    <Label Text="Starting date:"/>
+                    <DatePicker Date="{Binding EndDate}"
+                            Format="yyyy-MM-dd"
+                            HorizontalOptions="Fill"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Stroke="White" Padding="5">
+                <VerticalStackLayout>
+                    <Label Text="Pick a destination:"/>
+                    <Picker ItemsSource="{Binding Destinations}"
+                            ItemDisplayBinding="{Binding Name}"
+                            SelectedItem="{Binding SelectedDestination, Mode=TwoWay}" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Submit" 
+                    WidthRequest="200" 
+                    HorizontalOptions="Center"
+                    Command="{Binding UpdateTripCommand}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
