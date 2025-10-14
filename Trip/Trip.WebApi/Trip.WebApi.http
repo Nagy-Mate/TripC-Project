@@ -7,6 +7,9 @@ Accept: application/json
 GET {{Trip.WebApi_HostAddress}}/api/trips
 Accept: application/json
 
+### 
+GET {{Trip.WebApi_HostAddress}}/api/getTripsByDestinationId
+Accept: application/json
 ###
 GET {{Trip.WebApi_HostAddress}}/api/destinations/
 Accept: application/json
@@ -60,5 +63,5 @@ Accept: application/json
 }
 
 ###
-DELETE {{Trip.WebApi_HostAddress}}/api/destinations/1
+DELETE {{Trip.WebApi_HostAddress}}/api/destinations/4
 Content-Type: application/json
