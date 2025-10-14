@@ -22,4 +22,14 @@
         ContentTemplate="{DataTemplate views:AddTripPage}"
         Route="AddTripPage" />
 
+    <ShellContent
+        Title="Update Trip"
+        ContentTemplate="{DataTemplate views:UpdateTripPage}"
+        Route="UpdateTripPage" />
+
+    <ShellContent
+        Title="Delete Trip"
+        ContentTemplate="{DataTemplate views:DeleteTripPage}"
+        Route="DeleteTripPage" />
+
 </Shell>

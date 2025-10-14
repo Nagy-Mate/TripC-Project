@@ -28,11 +28,15 @@ namespace Trip.App
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<AddTripPage>();
             builder.Services.AddTransient<AddDestinationPage>();
+            builder.Services.AddTransient<UpdateTripPage>();
+            builder.Services.AddTransient<DeleteTripPage>();
 
             //ViewModels
             builder.Services.AddTransient<MainPageViewModel>();
             builder.Services.AddTransient<AddTripPageViewModel>();
             builder.Services.AddTransient<AddDestinationPageViewModel>();
+            builder.Services.AddTransient<UpdateTripPageViewModel>();
+            builder.Services.AddTransient<DeleteTripPageViewModel>();
 
             //Services
             builder.Services.AddTransient<ITripService, TripService>();

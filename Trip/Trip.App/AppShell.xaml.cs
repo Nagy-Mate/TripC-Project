@@ -8,6 +8,8 @@ namespace Trip.App
         {
             Routing.RegisterRoute("AddDestinationPage", typeof(AddDestinationPage));
             Routing.RegisterRoute("AddTripPage", typeof(AddTripPage));
+            Routing.RegisterRoute("UpdateTripPage", typeof(UpdateTripPage));
+            Routing.RegisterRoute("DeleteTripPage", typeof(DeleteTripPage));
             InitializeComponent();
         }
     }
