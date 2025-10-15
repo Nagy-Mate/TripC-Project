@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Trip.Services.Interfaces;
-
-namespace Trip.WebApi.Controllers;
+﻿namespace Trip.WebApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]

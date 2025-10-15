@@ -1,12 +1,4 @@
-﻿using CommunityToolkit.Maui;
-using Microsoft.Extensions.Logging;
-using Trip.App.ViewModels;
-using Trip.App.Views;
-using Trip.Data;
-using Trip.Services;
-using Trip.Services.Interfaces;
-
-namespace Trip.App
+﻿namespace Trip.App
 {
     public static class MauiProgram
     {

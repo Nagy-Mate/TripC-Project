@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Trip.Data;
-using Trip.Services.Interfaces;
-
-namespace Trip.Services;
+﻿namespace Trip.Services;
 
 public class TripService(TripDbContext db) : ITripService
 {
@@ -43,6 +39,7 @@ public class TripService(TripDbContext db) : ITripService
     {
         await db.Trips.Where(t => t.Id == id).ExecuteDeleteAsync();
     }
+
     public async Task UpdateTripAsync(Data.DbModels.Trip trip)
     {
         await db.Trips.Where(t => t.Id == trip.Id)

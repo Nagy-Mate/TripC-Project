@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Trip.Data.DbModels;
+﻿namespace Trip.Data.DbModels;
 
 public class Destination
 {

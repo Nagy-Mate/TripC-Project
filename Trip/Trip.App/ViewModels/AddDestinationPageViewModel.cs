@@ -1,9 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using System.Net.Http.Json;
-using Trip.Data.DbModels;
-
-namespace Trip.App.ViewModels;
+﻿namespace Trip.App.ViewModels;
 
 public partial class AddDestinationPageViewModel : ObservableObject
 {
@@ -41,7 +36,7 @@ public partial class AddDestinationPageViewModel : ObservableObject
             Country = string.Empty;
             Description = string.Empty;
         }
-        catch (Exception ex) 
+        catch (Exception ex)
         {
             Console.WriteLine($"Hiba az adatok küldésekor: {ex.Message}");
         }

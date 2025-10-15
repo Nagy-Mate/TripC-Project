@@ -1,0 +1,12 @@
+﻿global using CommunityToolkit.Maui;
+global using Microsoft.Extensions.Logging;
+global using Trip.App.ViewModels;
+global using Trip.App.Views;
+global using Trip.Data;
+global using Trip.Services;
+global using Trip.Services.Interfaces;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using CommunityToolkit.Mvvm.Input;
+global using System.Collections.ObjectModel;
+global using System.Net.Http.Json;
+global using Trip.Data.DbModels;

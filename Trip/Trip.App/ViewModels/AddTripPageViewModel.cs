@@ -1,10 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using System.Collections.ObjectModel;
-using System.Net.Http.Json;
-using Trip.Data.DbModels;
-
-namespace Trip.App.ViewModels;
+﻿namespace Trip.App.ViewModels;
 
 public partial class AddTripPageViewModel : ObservableObject
 {
@@ -75,7 +69,7 @@ public partial class AddTripPageViewModel : ObservableObject
             SelectedDestination = null;
         }
         catch (Exception ex)
-        { 
+        {
             Console.WriteLine(ex.ToString());
         }
     }

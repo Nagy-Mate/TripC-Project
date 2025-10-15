@@ -1,6 +1,4 @@
-﻿using Trip.App.ViewModels;
-
-namespace Trip.App;
+﻿namespace Trip.App;
 
 public partial class MainPage : ContentPage
 {

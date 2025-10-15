@@ -1,10 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using System.Collections.ObjectModel;
-using System.Net.Http.Json;
-using Trip.Services.Interfaces;
-
-namespace Trip.App.ViewModels;
+﻿namespace Trip.App.ViewModels;
 
 public partial class MainPageViewModel : ObservableObject
 {

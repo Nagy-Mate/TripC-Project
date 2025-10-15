@@ -1,6 +1,4 @@
-﻿using Trip.App.Views;
-
-namespace Trip.App
+﻿namespace Trip.App
 {
     public partial class AppShell : Shell
     {

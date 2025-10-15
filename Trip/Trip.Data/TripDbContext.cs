@@ -1,7 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Trip.Data.DbModels;
+﻿namespace Trip.Data;
 
-namespace Trip.Data;
 public class TripDbContext(DbContextOptions<TripDbContext> options) : DbContext(options)
 {
     public DbSet<DbModels.Trip> Trips { get; set; }

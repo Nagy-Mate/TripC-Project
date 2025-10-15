@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Trip.Data.DbModels;
-using Trip.Services.Interfaces;
-
-namespace Trip.WebApi.Controllers;
+﻿namespace Trip.WebApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -24,12 +20,14 @@ public class DestinationsController(IDestinationService destinationService) : Co
         }
         return Ok(destination);
     }
+
     [HttpPost]
     public async Task<ActionResult> CreateDestination(Destination destination)
     {
         await destinationService.CreateDestinationAsync(destination);
         return CreatedAtAction(nameof(GetDestinationById), new { id = destination.Id }, destination);
-    }   
+    }
+
     [HttpPut("{id}")]
     public async Task<ActionResult> UpdateDestination(int id, Destination destination)
     {
@@ -38,10 +36,11 @@ public class DestinationsController(IDestinationService destinationService) : Co
         {
             return NotFound();
         }
-        destination.Id = id;    
+        destination.Id = id;
         await destinationService.UpdateDestinationAsync(destination);
         return NoContent();
     }
+
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteDestination(int id)
     {
@@ -52,5 +51,4 @@ public class DestinationsController(IDestinationService destinationService) : Co
         await destinationService.DeleteDestinationAsync(id);
         return NoContent();
     }
-
 }
