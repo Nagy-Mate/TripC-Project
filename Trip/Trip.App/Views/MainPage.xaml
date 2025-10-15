@@ -4,25 +4,69 @@
              xmlns:viewModel="clr-namespace:Trip.App.ViewModels"
              xmlns:models="clr-namespace:Trip.Data.DbModels;assembly=Trip.Data"
              x:Class="Trip.App.MainPage"
-             x:DataType="viewModel:MainPageViewModel">
+             x:DataType="viewModel:MainPageViewModel"
+             BackgroundColor="#F5F7FA">
 
-    <ScrollView Padding="5">
+    <ScrollView Padding="10">
         <CollectionView ItemsSource="{Binding Trips}">
+            <!-- Két oszlopos rács -->
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="2"
+                                 HorizontalItemSpacing="10"
+                                 VerticalItemSpacing="10" />
+            </CollectionView.ItemsLayout>
+
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Trip">
-                    <Border Margin="10" Padding="10" Stroke="LightGray" StrokeShape="RoundRectangle 20">
-                        <VerticalStackLayout>
-                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="18"/>
-                            <HorizontalStackLayout Spacing="3">
-                                <Label Text="Úti cél:" FontSize="14" TextColor="Gray"/>
-                                <Label Text="{Binding Destination.Country}" FontSize="14" TextColor="Gray"/>
-                                <Label Text="→" FontSize="14" TextColor="Gray"/>
-                                <Label Text="{Binding Destination.Name}" FontSize="14" TextColor="Gray"/>
+                    <Frame Padding="12"
+                           CornerRadius="16"
+                           HasShadow="True"
+                           BackgroundColor="White"
+                           HeightRequest="160">
+                        <VerticalStackLayout Spacing="6">
+
+                            <!-- Név -->
+                            <Label Text="{Binding Name}"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   LineBreakMode="TailTruncation"
+                                   TextColor="#2D3748"/>
+
+                            <!-- Úti cél -->
+                            <HorizontalStackLayout Spacing="4" VerticalOptions="Center">
+                                <Label Text="📍"
+                                       FontSize="13"
+                                       VerticalOptions="Center"/>
+                                <Label Text="{Binding Destination.Country}"
+                                       FontSize="13"
+                                       TextColor="#4A5568"
+                                       LineBreakMode="TailTruncation"/>
+                                <Label Text="→"
+                                       FontSize="13"
+                                       TextColor="#A0AEC0"/>
+                                <Label Text="{Binding Destination.Name}"
+                                       FontSize="13"
+                                       TextColor="#4A5568"
+                                       LineBreakMode="TailTruncation"/>
                             </HorizontalStackLayout>
-                            <Label Text="{Binding StartDate, StringFormat='Kezdet: {0:yyyy.MM.dd}'}" FontSize="13"/>
-                            <Label Text="{Binding EndDate, StringFormat='Vége: {0:yyyy.MM.dd}'}" FontSize="13"/>
+
+                            <BoxView HeightRequest="1"
+                                     BackgroundColor="#E2E8F0"
+                                     Margin="0,5"/>
+
+                            <!-- Dátumok -->
+                            <VerticalStackLayout Spacing="2">
+                                <Label Text="{Binding StartDate, StringFormat='🗓️ Kezdet: {0:yyyy.MM.dd}'}"
+                                       FontSize="12"
+                                       TextColor="#718096"/>
+                                <Label Text="{Binding EndDate, StringFormat='🏁 Vége: {0:yyyy.MM.dd}'}"
+                                       FontSize="12"
+                                       TextColor="#718096"/>
+                            </VerticalStackLayout>
+
                         </VerticalStackLayout>
-                    </Border>
+                    </Frame>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

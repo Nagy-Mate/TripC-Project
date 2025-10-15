@@ -4,38 +4,91 @@
              x:Class="Trip.App.Views.AddDestinationPage"
              xmlns:viewModel="clr-namespace:Trip.App.ViewModels"
              xmlns:models="clr-namespace:Trip.Data.DbModels;assembly=Trip.Data"
-             Title="AddDestinationPage">
+             x:DataType="viewModel:AddDestinationPageViewModel"
+             BackgroundColor="#F5F7FA"
+             Title="Add New Destination">
 
     <ScrollView>
-        <VerticalStackLayout Spacing="20" Padding="10" HorizontalOptions="Center"  WidthRequest="400">
-            <Label Text="Add New Destination" FontSize="24" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+        <VerticalStackLayout Padding="20"
+                             Spacing="25"
+                             HorizontalOptions="Center"
+                             WidthRequest="380">
 
-            <Border Stroke="White" Padding="5">
-                <VerticalStackLayout>
-                    <Label Text="Destination's name:"/>
-                    <Entry FontSize="15" Text="{Binding Name}"/>
+            <!-- Cím -->
+            <Label Text="Add New Destination"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   TextColor="#2D3748"
+                   HorizontalTextAlignment="Center"/>
+
+            <!-- Form kártya -->
+            <Frame Padding="20"
+                   CornerRadius="20"
+                   HasShadow="True"
+                   BackgroundColor="White">
+
+                <VerticalStackLayout Spacing="20">
+
+                    <!-- Destination Name -->
+                    <VerticalStackLayout>
+                        <Label Text="Destination Name"
+                               FontAttributes="Bold"
+                               FontSize="15"
+                               TextColor="#4A5568"/>
+                        <Entry Placeholder="e.g. Paris"
+                               FontSize="15"
+                               TextColor="#2D3748"
+                               PlaceholderColor="#A0AEC0"
+                               Text="{Binding Name}"
+                               BackgroundColor="#EDF2F7"
+                               HeightRequest="40"/>
+                    </VerticalStackLayout>
+
+                    <!-- Country -->
+                    <VerticalStackLayout>
+                        <Label Text="Country"
+                               FontAttributes="Bold"
+                               FontSize="15"
+                               TextColor="#4A5568"/>
+                        <Entry Placeholder="e.g. France"
+                               FontSize="15"
+                               TextColor="#2D3748"
+                               PlaceholderColor="#A0AEC0"
+                               Text="{Binding Country}"
+                               BackgroundColor="#EDF2F7"
+                               HeightRequest="40" />
+                    </VerticalStackLayout>
+
+                    <!-- Description -->
+                    <VerticalStackLayout>
+                        <Label Text="Description (optional)"
+                               FontAttributes="Bold"
+                               FontSize="15"
+                               TextColor="#4A5568"/>
+                        <Editor Placeholder="Write something about this place..."
+                                FontSize="15"
+                                AutoSize="TextChanges"
+                                TextColor="#2D3748"
+                                PlaceholderColor="#A0AEC0"
+                                Text="{Binding Description}"
+                                BackgroundColor="#EDF2F7"
+                                HeightRequest="80"/>
+                    </VerticalStackLayout>
+
+                    <!-- Submit button -->
+                    <Button Text="Save Destination"
+                            Command="{Binding AddDestinationCommand}"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="White"
+                            BackgroundColor="#3182CE"
+                            CornerRadius="25"
+                            HeightRequest="48"
+                            HorizontalOptions="Center"
+                            WidthRequest="220"/>
+
                 </VerticalStackLayout>
-            </Border>
-
-            <Border Stroke="White" Padding="5">
-                <VerticalStackLayout>
-                    <Label Text="Country's name:"/>
-                    <Entry FontSize="15" Text="{Binding Country}"/>
-                </VerticalStackLayout>
-            </Border>
-
-            <Border Stroke="White" Padding="5">
-                <VerticalStackLayout>
-                    <Label Text="Descriptions (Optional):"/>
-                    <Entry FontSize="15" Text="{Binding Description}"/>
-                </VerticalStackLayout>
-            </Border>
-
-            <Button Text="Submit" 
-                    WidthRequest="200" 
-                    HorizontalOptions="Center"
-                    Command="{Binding AddDestinationCommand}"/>
-
+            </Frame>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
