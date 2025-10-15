@@ -129,7 +129,7 @@ function CreatePage() {
               type="text"
               value={newTrip.name || ""}
               onChange={(e) => {
-                setNewTrip({ ...newTrip, name: e.target.value.trim() });
+                setNewTrip({ ...newTrip, name: e.target.value });
                 SetIsTSuccVisible(false);
               }}
             />
