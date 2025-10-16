@@ -4,3 +4,4 @@ global using Trip.Services;
 global using Trip.Services.Interfaces;
 global using Microsoft.AspNetCore.Mvc;
 global using Trip.Data.DbModels;
+global using Microsoft.AspNetCore.Identity;
