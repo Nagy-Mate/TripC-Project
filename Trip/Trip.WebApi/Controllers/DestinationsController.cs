@@ -5,12 +5,14 @@
 public class DestinationsController(IDestinationService destinationService) : ControllerBase
 {
     [HttpGet]
+    [Authorize(Roles = "User, Admin")]
     public async Task<ActionResult<List<Destination>>> GetDestinations()
     {
         return Ok(await destinationService.GetDestinationsAsync());
     }
 
     [HttpGet("{id}")]
+    [Authorize(Roles = "User, Admin")]
     public async Task<ActionResult<Destination>> GetDestinationById(int id)
     {
         var destination = await destinationService.GetDestinationByIdAsync(id);
@@ -22,6 +24,7 @@ public class DestinationsController(IDestinationService destinationService) : Co
     }
 
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> CreateDestination(Destination destination)
     {
         await destinationService.CreateDestinationAsync(destination);
@@ -29,6 +32,7 @@ public class DestinationsController(IDestinationService destinationService) : Co
     }
 
     [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> UpdateDestination(int id, Destination destination)
     {
 
@@ -42,6 +46,7 @@ public class DestinationsController(IDestinationService destinationService) : Co
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> DeleteDestination(int id)
     {
         if (!await destinationService.DestinationExistsAsync(id))

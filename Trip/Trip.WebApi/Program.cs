@@ -13,7 +13,14 @@ builder.Services.AddOpenApiDocument(config =>
         In = NSwag.OpenApiSecurityApiKeyLocation.Header,
         Description = "Type 'Bearer {your JWT token} into th field below."
     });
+
+    config.OperationProcessors.Add(new NSwag.Generation.Processors.Security.AspNetCoreOperationSecurityScopeProcessor("JWT"));
+
 });
+
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("admin", policy => policy.RequireRole("Admin"))
+    .AddPolicy("user", policy => policy.RequireRole("User"));
 
 //database 
 builder.Services.AddDbContext<TripDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -59,5 +66,24 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//auto migration 
+using var serviceScope = (app as IApplicationBuilder).ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
+using var dbContext = serviceScope.ServiceProvider.GetService<TripDbContext>();
+var migration = await dbContext.Database.GetPendingMigrationsAsync();
+
+if (migration.Any())
+{
+    await dbContext.Database.MigrateAsync();
+}
+
+var role = dbContext.Set<IdentityRole>();
+if(!await role.AnyAsync(role => role.Name == "Admin"))
+{
+    role.Add(new IdentityRole { Name = "Admin" });
+    role.Add(new IdentityRole { Name = "User" });
+
+    await dbContext.SaveChangesAsync();
+}
 
 app.Run();

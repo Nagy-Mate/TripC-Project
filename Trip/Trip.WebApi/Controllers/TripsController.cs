@@ -5,12 +5,14 @@
 public class TripsController(ITripService tripService, IDestinationService destinationService) : ControllerBase
 {
     [HttpGet]
+    [Authorize(Roles = "User, Admin")]
     public async Task<ActionResult<List<Data.DbModels.Trip>>> GetTrips()
     {
         return Ok(await tripService.GetTripsAsync());
     }
 
     [HttpGet("{id}")]
+    [Authorize(Roles = "User, Admin")]
     public async Task<ActionResult<Data.DbModels.Trip>> GetTripById(int id)
     {
         var trip = await tripService.GetTripByIdAsync(id);
@@ -22,12 +24,15 @@ public class TripsController(ITripService tripService, IDestinationService desti
     }
 
     [HttpGet("ByDestination/{destinationId}")]
+    [Authorize(Roles = "User, Admin")]
     public async Task<ActionResult<List<Data.DbModels.Trip>>> GetTripsByDestinationId(int destinationId)
     {
         return Ok(await tripService.GetTripsByDestinationIdAsync(destinationId));
     }
 
+    
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> CreateTrip(Data.DbModels.Trip trip)
     {
         if (!await destinationService.DestinationExistsAsync(trip.DestinationId))
@@ -39,6 +44,7 @@ public class TripsController(ITripService tripService, IDestinationService desti
     }
 
     [HttpPut("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> UpdateTrip(int id, Data.DbModels.Trip trip)
     {
         if (!await tripService.TripExistsAsync(id))
@@ -55,6 +61,7 @@ public class TripsController(ITripService tripService, IDestinationService desti
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult> DeleteTrip(int id)
     {
         if (!await tripService.TripExistsAsync(id))
